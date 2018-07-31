@@ -23,14 +23,7 @@ print('***                                                               ***')
 print('***             Welcome to Online Registration System             ***')
 print('***                                                               ***')
 print('*********************************************************************')
-#
-# print('Are you using Windows or Linux/OSX(MAC)?')
-# clear_Var = 0
-# clear_Val = input('Press 1 for Windows and Press 2 for Linux/OSX(MAC)')
-# if clear_Val == 1:
-#     clear_var = 'cls'
-# else:
-#     clear_Var == 'clear'
+
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
