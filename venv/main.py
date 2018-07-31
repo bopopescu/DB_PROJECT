@@ -149,7 +149,6 @@ def menu2():
     else:
         menu_actions['2']()
 
-    print('test')
     print('\nWould you like to return to the main menu or delete another course?\n')
     mini_sel = input("Press 1 to return to main menu or 2 to delete another course: \n")
     if mini_sel == '2':
