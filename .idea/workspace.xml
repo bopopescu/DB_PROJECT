@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aad680f1-629a-41a3-8b03-20ce86001c99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/functionsDB.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,33 +17,38 @@
     <session id="387672477">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="10" />
+          <entry key="py" value="11" />
+          <entry key="sql" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="10" />
+          <entry key="DBN-SQL" value="1" />
+          <entry key="Python" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="35" />
-          <entry key="py" value="7083" />
-          <entry key="txt" value="12" />
+          <entry key="dummy" value="37" />
+          <entry key="py" value="8627" />
+          <entry key="sql" value="23" />
+          <entry key="txt" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="47" />
-          <entry key="Python" value="7083" />
+          <entry key="DBN-SQL" value="23" />
+          <entry key="PLAIN_TEXT" value="63" />
+          <entry key="Python" value="8627" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -58,11 +63,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1969">
-              <caret line="151" column="84" lean-forward="true" selection-start-line="151" selection-start-column="84" selection-end-line="151" selection-end-column="84" />
+            <state relative-caret-position="1178">
+              <caret line="203" column="37" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
               <folding>
                 <element signature="e#122#136#0" expanded="true" />
+                <marker date="1533085464678" expanded="true" signature="5311:5312" ph="..." />
+                <marker date="1533085464678" expanded="true" signature="6241:6842" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/functionsDB.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+              <folding>
+                <marker date="1533085453647" expanded="true" signature="264:581" ph="..." />
+                <marker date="1533085453647" expanded="true" signature="597:598" ph="..." />
+                <marker date="1533085453647" expanded="true" signature="597:602" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="db://1583ed9f-da7d-40f6-9c9c-bcea4504468c/consoles/Connection">
+          <provider selected="true" editor-type-id="0.CONSOLE">
+            <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="-0.0" current-schema="dbproject" session-id="MAIN">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,6 +120,7 @@
         <entry key="$PROJECT_DIR$/../DB_PROJ(PY)" value="b764556110f1f86a362c6df2be6297913b65fe25" />
       </map>
     </option>
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -101,9 +132,19 @@
         <option value="$PROJECT_DIR$/venv/create_tables.py" />
         <option value="$PROJECT_DIR$/venv/create_conn.py" />
         <option value="$PROJECT_DIR$/venv/menuPy.py" />
+        <option value="1583ed9f-da7d-40f6-9c9c-bcea4504468c/consoles/Connection" />
+        <option value="$PROJECT_DIR$/venv/functions.py" />
+        <option value="$PROJECT_DIR$/venv/functionsDB.py" />
         <option value="$PROJECT_DIR$/venv/main.py" />
       </list>
     </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -117,7 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -134,10 +174,22 @@
               <item name="DB_PROJECT" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
+            <path>
+              <item name="DB_PROJECT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.7 (DB_PROJECT) &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="DB_PROJECT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.7 (DB_PROJECT) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,7 +213,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.menuPy">
+  <component name="RunManager" selected="Python.main">
     <configuration name="create_conn (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DB_PROJECT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -317,27 +369,36 @@
       <option name="presentableId" value="Default" />
       <updated>1532981447383</updated>
     </task>
+    <task id="LOCAL-00001" summary="finally fixed!">
+      <created>1533033746924</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1533033746924</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="DB Browser" order="0" weight="0.32980832" />
+      <window_info id="DB Browser" order="0" weight="0.329294" />
       <window_info id="Job Explorer" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Project Explorer" order="3" />
-      <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.312961" />
+      <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.16491044" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Console" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32939914" />
-      <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" weight="0.32939914" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50052685" side_tool="true" weight="0.37768242" />
       <window_info anchor="bottom" id="Messages" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Python Console" order="5" weight="0.32939914" />
       <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="DB Execution Console" order="7" />
+      <window_info anchor="bottom" id="DB Execution Console" order="7" weight="0.32939914" />
       <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.49947312" weight="0.37768242" />
+      <window_info active="true" anchor="bottom" id="Run" order="9" sideWeight="0.49947312" visible="true" weight="0.37768242" />
       <window_info anchor="bottom" id="Debug" order="10" weight="0.39914164" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
@@ -372,6 +433,32 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -379,6 +466,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../DB_PROJ(PY)" />
     </ignored-roots>
+    <MESSAGE value="finally fixed!" />
+    <option name="LAST_COMMIT_MESSAGE" value="finally fixed!" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/init_tables.py" />
@@ -386,12 +475,33 @@
     <entry file="file://$PROJECT_DIR$/venv/create_db.py" />
     <entry file="file://$PROJECT_DIR$/venv/create_conn.py" />
     <entry file="file://$PROJECT_DIR$/../DB_PROJ(PY)/main.py" />
+    <entry file="db://1583ed9f-da7d-40f6-9c9c-bcea4504468c/consoles/Connection">
+      <provider selected="true" editor-type-id="0.CONSOLE">
+        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="-0.0" current-schema="dbproject" session-id="MAIN">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/functionsDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <marker date="1533085453647" expanded="true" signature="264:581" ph="..." />
+            <marker date="1533085453647" expanded="true" signature="597:598" ph="..." />
+            <marker date="1533085453647" expanded="true" signature="597:602" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1969">
-          <caret line="151" column="84" lean-forward="true" selection-start-line="151" selection-start-column="84" selection-end-line="151" selection-end-column="84" />
+        <state relative-caret-position="1178">
+          <caret line="203" column="37" selection-start-line="203" selection-start-column="37" selection-end-line="203" selection-end-column="37" />
           <folding>
             <element signature="e#122#136#0" expanded="true" />
+            <marker date="1533085464678" expanded="true" signature="5311:5312" ph="..." />
+            <marker date="1533085464678" expanded="true" signature="6241:6842" ph="..." />
           </folding>
         </state>
       </provider>

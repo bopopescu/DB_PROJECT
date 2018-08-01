@@ -5,6 +5,7 @@
 
 import sys, os
 import mysql.connector
+import functionsDB
 
 cnx = mysql.connector.connect(user='dbproject',
                               password='1234pass',
@@ -41,6 +42,7 @@ menu_actions = {}
 #===================
 
 def main_menu():
+    print('******MAIN MENU******')
     print('\t 1. Add a course')
     print('\t 2. Delete a course')
     print('\t 3. Add a student')
@@ -111,53 +113,104 @@ def menu2():
     print(delete_mess)
     print('-' * len(delete_mess))
 
-    title_bar = 'Course Code: |\tCourse Title:'
-    print(title_bar)
-    print('-' * len(title_bar))
-    check_course = ("SELECT code, title FROM Course")
+    functionsDB.showCourse()
 
-    cursor.execute(check_course)
-
-
-    for (code,title) in cursor:
-        current_courses = ('{}\t\t |\t{}'.format(code,title))
-        print(current_courses)
-
-    print('\nPlease input the course code you would like to delete: ')
+    print('\nPlease input the course code you would like to delete or nothing to return to main menu: ')
     course_code = input(" >> ")
     select_course = ("SELECT code, title FROM Course WHERE code = %s")
     cursor.execute(select_course, (course_code, ))
-
-    for (code, title) in cursor:
-        print('You have selected to delete Course: \n')
-        print(title_bar)
-        print('-' * len(title_bar))
-        selected_course = ('{}\t\t |\t{}'.format(code,title))
-        print(selected_course)
-    print("\nAre you sure you want to delete Course Code:",code,',Course Title:',title,'?')
-    confirm_sel = input('Press Y for YES and N for NO')
-    confirm_sel = confirm_sel.lower()
-    if confirm_sel == 'y':
-        try:
-            code = course_code
-            delete_course = ("DELETE FROM Course WHERE code = %s")
-            cnx.commit()
-            cursor.execute(delete_course, (course_code, ))
-            print('\nCourse: ', code, 'has been deleted')
-        except mysql.connector.Error as err:
-            print('Error code: ', err)
+    if select_course == '':
+        print('Error: No course selected, returning you to main menu')
+        menu_actions['main_menu']()
     else:
-        menu_actions['2']()
 
-    print('\nWould you like to return to the main menu or delete another course?\n')
-    mini_sel = input("Press 1 to return to main menu or 2 to delete another course: \n")
-    if mini_sel == '2':
-        menu_actions['2']()
+        for (code, title) in cursor:
+            print('You have selected to delete Course: \n')
+            print(title_bar)
+            print('-' * len(title_bar))
+            selected_course = ('{}\t\t |\t{}'.format(code,title))
+            print(selected_course)
+        print("\nAre you sure you want to delete Course Code:",code,',Course Title:',title,'?')
+
+        confirm_sel = input('Press Y for YES and N for NO')
+        confirm_sel = confirm_sel.lower()
+
+        if confirm_sel == 'y':
+            try:
+                code = course_code
+                delete_course = ("DELETE FROM Course WHERE code = %s")
+                cursor.execute(delete_course, (course_code, ))
+                cnx.commit()
+                print('\nCourse: ', code, 'has been deleted')
+            except mysql.connector.Error as err:
+                print('Error code: ', err)
+
+            print('\nWould you like to return to the main menu or delete another course?\n')
+            mini_sel = input("Press 1 to return to main menu or 2 to delete another course: \n")
+
+            if mini_sel == '2':
+                menu_actions['2']()
+            else:
+                menu_actions['main_menu']()
+
+                exec_menu(choice)
+
+        else:
+            menu_actions['2']()
+
+
+
+    return
+#Menu3 :: ADD A STUDENT (SSN, name, address, major)
+def menu3():
+
+    print('Add a student:')
+    ssn = input('Please enter the new students SSN: ')
+    name = input('Please input the new students name: ')
+    address = input('Please enter the new students address: ')
+    major = input('Please input the new students major: ')
+
+    new_student = (ssn, name, address, major)
+    add_student = ("INSERT INTO Student"
+                  "(ssn, name, address, major)"
+                  "VALUES (%s, %s , %s, %s)")
+
+    try:
+        cursor.execute(add_student, new_student)
+        cnx.commit()
+        print('\nStudent: ', name, 'has been added')
+    except mysql.connector.Error as err:
+        print('Error code: ', err)
+
+    print('Would you like to add another student? Y for YES and N for NO!')
+    choice = input(' >> ')
+    choice = choice.lower()
+    if choice == 'y':
+        menu_actions['3']()
     else:
         menu_actions['main_menu']()
-        choice = input(" >> ")
-        exec_menu(choice)
-    return
+
+#Menu4 :: DELETE STUDENT (BY SSN)
+def menu4():
+    print('Delete a student: ')
+
+    functionsDB.showStuds()
+
+    del_ssn = input('Please input the SSN of the student you would like to delete: ')
+
+    print("\nAre you sure you want to delete Student SSN: ", del_ssn, '?')
+
+    # confirm_sel = input('Press Y for YES and N for NO')
+    # confirm_sel = confirm_sel.lower()
+
+
+    try:
+        delete_stud = ("DELETE FROM Student WHERE ssn = %s")
+        cursor.execute(delete_stud, (del_ssn,))
+        cnx.commit()
+        print('\nStudent: ', del_ssn, 'has been deleted')
+    except mysql.connector.Error as err:
+        print('Error code: ', err)
 
 
 # Back to main menu
@@ -180,6 +233,8 @@ menu_actions = {
     'main_menu': main_menu,
     '1': menu1,
     '2': menu2,
+    '3': menu3,
+    '4': menu4,
     '9': back,
     '10': exit,
 }
