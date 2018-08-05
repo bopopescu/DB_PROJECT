@@ -24,6 +24,6 @@ def showStuds():
     print('Current student database: ')
     cursor.execute(show_studs)
 
-    for (SSN, name, address, major) in cursor:
-        curr_studs = ('{}\t | {}'.format(SSN, name))
+    for (ssn, name, address, major) in cursor:
+        curr_studs = ('{}\t | {}'.format(ssn, name))
         print(curr_studs)
