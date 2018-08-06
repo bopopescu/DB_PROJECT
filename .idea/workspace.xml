@@ -39,16 +39,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="37" />
-          <entry key="py" value="17249" />
+          <entry key="py" value="17776" />
           <entry key="sql" value="61" />
-          <entry key="txt" value="244" />
+          <entry key="txt" value="282" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DBN-SQL" value="61" />
-          <entry key="PLAIN_TEXT" value="281" />
-          <entry key="Python" value="17249" />
+          <entry key="PLAIN_TEXT" value="319" />
+          <entry key="Python" value="17776" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -63,14 +63,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="351" column="16" lean-forward="true" selection-start-line="351" selection-start-column="16" selection-end-line="351" selection-end-column="16" />
+            <state relative-caret-position="304">
+              <caret line="361" column="51" selection-start-line="361" selection-start-column="51" selection-end-line="361" selection-end-column="51" />
               <folding>
                 <element signature="e#105#125#0" expanded="true" />
-                <marker date="1533520300943" expanded="true" signature="5100:5101" ph="..." />
-                <marker date="1533520300943" expanded="true" signature="6053:6823" ph="..." />
-                <marker date="1533520300943" expanded="true" signature="10675:12583" ph="..." />
-                <marker date="1533520300943" expanded="true" signature="14267:16323" ph="..." />
+                <marker date="1533526916946" expanded="true" signature="5067:5068" ph="..." />
+                <marker date="1533526916946" expanded="true" signature="5998:6768" ph="..." />
+                <marker date="1533526916946" expanded="true" signature="10586:12524" ph="..." />
+                <marker date="1533526916946" expanded="true" signature="14462:16517" ph="..." />
               </folding>
             </state>
           </provider>
@@ -79,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/functionsDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+            <state relative-caret-position="323">
+              <caret line="34" column="29" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="29" />
               <folding>
                 <marker date="1533513956296" expanded="true" signature="264:581" ph="..." />
                 <marker date="1533513956296" expanded="true" signature="597:598" ph="..." />
@@ -400,7 +400,21 @@
       <option name="project" value="LOCAL" />
       <updated>1533518126026</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Finished 9, mid way through 8">
+      <created>1533520325479</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1533520325479</updated>
+    </task>
+    <task id="LOCAL-00007" summary="STRUGGLIN">
+      <created>1533523877784</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1533523877784</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -424,7 +438,7 @@
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Console" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32832617" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32867134" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32832617" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50052685" side_tool="true" weight="0.37768242" />
       <window_info anchor="bottom" id="Messages" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Python Console" order="5" weight="0.32939914" />
@@ -504,7 +518,9 @@
     <MESSAGE value="further progress on the project. just menu8 and menu9 left" />
     <MESSAGE value="further progress on the project. working on 9" />
     <MESSAGE value="Mid way through 9" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mid way through 9" />
+    <MESSAGE value="Finished 9, mid way through 8" />
+    <MESSAGE value="STRUGGLIN" />
+    <option name="LAST_COMMIT_MESSAGE" value="STRUGGLIN" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/init_tables.py" />
@@ -527,8 +543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/functionsDB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+        <state relative-caret-position="323">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="29" />
           <folding>
             <marker date="1533513956296" expanded="true" signature="264:581" ph="..." />
             <marker date="1533513956296" expanded="true" signature="597:598" ph="..." />
@@ -541,14 +557,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="351" column="16" lean-forward="true" selection-start-line="351" selection-start-column="16" selection-end-line="351" selection-end-column="16" />
+        <state relative-caret-position="304">
+          <caret line="361" column="51" selection-start-line="361" selection-start-column="51" selection-end-line="361" selection-end-column="51" />
           <folding>
             <element signature="e#105#125#0" expanded="true" />
-            <marker date="1533520300943" expanded="true" signature="5100:5101" ph="..." />
-            <marker date="1533520300943" expanded="true" signature="6053:6823" ph="..." />
-            <marker date="1533520300943" expanded="true" signature="10675:12583" ph="..." />
-            <marker date="1533520300943" expanded="true" signature="14267:16323" ph="..." />
+            <marker date="1533526916946" expanded="true" signature="5067:5068" ph="..." />
+            <marker date="1533526916946" expanded="true" signature="5998:6768" ph="..." />
+            <marker date="1533526916946" expanded="true" signature="10586:12524" ph="..." />
+            <marker date="1533526916946" expanded="true" signature="14462:16517" ph="..." />
           </folding>
         </state>
       </provider>
