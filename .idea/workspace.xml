@@ -39,16 +39,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="37" />
-          <entry key="py" value="16681" />
+          <entry key="py" value="17249" />
           <entry key="sql" value="61" />
-          <entry key="txt" value="227" />
+          <entry key="txt" value="244" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DBN-SQL" value="61" />
-          <entry key="PLAIN_TEXT" value="264" />
-          <entry key="Python" value="16681" />
+          <entry key="PLAIN_TEXT" value="281" />
+          <entry key="Python" value="17249" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -63,14 +63,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+            <state relative-caret-position="238">
+              <caret line="351" column="16" lean-forward="true" selection-start-line="351" selection-start-column="16" selection-end-line="351" selection-end-column="16" />
               <folding>
                 <element signature="e#105#125#0" expanded="true" />
-                <marker date="1533518113881" expanded="true" signature="5081:5082" ph="..." />
-                <marker date="1533518113881" expanded="true" signature="6011:6781" ph="..." />
-                <marker date="1533518113881" expanded="true" signature="10598:12508" ph="..." />
-                <marker date="1533518113881" expanded="true" signature="13677:15886" ph="..." />
+                <marker date="1533520300943" expanded="true" signature="5100:5101" ph="..." />
+                <marker date="1533520300943" expanded="true" signature="6053:6823" ph="..." />
+                <marker date="1533520300943" expanded="true" signature="10675:12583" ph="..." />
+                <marker date="1533520300943" expanded="true" signature="14267:16323" ph="..." />
               </folding>
             </state>
           </provider>
@@ -79,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/functionsDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
+            <state relative-caret-position="663">
               <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
               <folding>
                 <marker date="1533513956296" expanded="true" signature="264:581" ph="..." />
@@ -393,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533514245542</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Mid way through 9">
+      <created>1533518126026</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1533518126026</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -496,7 +503,8 @@
     <MESSAGE value="Starting to move some of the common print function to a dedicated functions page and calling in main to reduce code length." />
     <MESSAGE value="further progress on the project. just menu8 and menu9 left" />
     <MESSAGE value="further progress on the project. working on 9" />
-    <option name="LAST_COMMIT_MESSAGE" value="further progress on the project. working on 9" />
+    <MESSAGE value="Mid way through 9" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mid way through 9" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/init_tables.py" />
@@ -510,9 +518,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/sqlCreds.py" />
+    <entry file="file://$PROJECT_DIR$/createtables(1).sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="49" column="26" lean-forward="true" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/functionsDB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
+        <state relative-caret-position="663">
           <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
           <folding>
             <marker date="1533513956296" expanded="true" signature="264:581" ph="..." />
@@ -524,23 +539,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/createtables(1).sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="49" column="26" lean-forward="true" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="388" lean-forward="true" selection-start-line="388" selection-end-line="388" />
+        <state relative-caret-position="238">
+          <caret line="351" column="16" lean-forward="true" selection-start-line="351" selection-start-column="16" selection-end-line="351" selection-end-column="16" />
           <folding>
             <element signature="e#105#125#0" expanded="true" />
-            <marker date="1533518113881" expanded="true" signature="5081:5082" ph="..." />
-            <marker date="1533518113881" expanded="true" signature="6011:6781" ph="..." />
-            <marker date="1533518113881" expanded="true" signature="10598:12508" ph="..." />
-            <marker date="1533518113881" expanded="true" signature="13677:15886" ph="..." />
+            <marker date="1533520300943" expanded="true" signature="5100:5101" ph="..." />
+            <marker date="1533520300943" expanded="true" signature="6053:6823" ph="..." />
+            <marker date="1533520300943" expanded="true" signature="10675:12583" ph="..." />
+            <marker date="1533520300943" expanded="true" signature="14267:16323" ph="..." />
           </folding>
         </state>
       </provider>

@@ -10,7 +10,6 @@ cnx = mysql.connector.connect(user='dbproject',
                               password='1234pass',
                               host='127.0.0.1',
                               database='dbproject')
-
 cursor = cnx.cursor()
 
 #================
@@ -32,8 +31,8 @@ time.sleep(1)
 #   MENU FUNCTIONS
 #===================
 
-
 def main_menu():
+    clear()
     functionsDB.printSpaces()
     print('******MAIN MENU******')
     print('\t 1. Add a course')
@@ -49,7 +48,6 @@ def main_menu():
 
     choice = input(" >> ")
     exec_menu(choice)
-
     return
 
 #Execute Menu
@@ -99,6 +97,7 @@ def menu1():
 
 #Menu2 :: DELETE A COURSE
 def menu2():
+    clear()
     print('\nDelete a course: \n')
     delete_mess = 'Current courses available to delete: '
     print('-' * len(delete_mess))
@@ -106,7 +105,6 @@ def menu2():
     print('-' * len(delete_mess))
 
     functionsDB.showCourse()
-
     print('\nPlease input the course code you would like to delete or nothing to return to main menu: ')
     course_code = input(" >> ")
     select_course = ("SELECT code, title FROM Course WHERE code = %s")
@@ -146,14 +144,13 @@ def menu2():
                 menu_actions['main_menu']()
 
                 exec_menu(choice)
-
         else:
             menu_actions['2']()
     return
 
 #Menu3 :: ADD A STUDENT (SSN, name, address, major)
 def menu3():
-
+    clear()
     print('Add a student:')
     ssn = input('Please enter the new students SSN: ')
     name = input('Please input the new students name: ')
@@ -182,6 +179,7 @@ def menu3():
 
 #Menu4 :: DELETE STUDENT (BY SSN)
 def menu4():
+    clear()
     print('Delete a student: ')
     functionsDB.showStuds()
     del_ssn = input('Please input the SSN of the student you would like to delete: ')
@@ -208,10 +206,10 @@ def menu4():
 
 #Register a course ((SSN), (code), year, semester)
 def menu5():
+    clear()
     print("Register a student for a course: ")
     functionsDB.showStuds()
     selSSN = input('Please enter a SSN of the student you would like to register: (ENTER NOTHING TO RETURN TO THE MAIN MENU)')
-
 
     if selSSN == '':
         print('No course selected, returning you to main menu')
@@ -244,6 +242,7 @@ def menu5():
 
 #Menu6 :: Drop a student from a course (code, SSN, year, semester)
 def menu6():
+    clear()
     print("Drop a student from a course: ")
     print("Current courses: ")
     functionsDB.showCourse()
@@ -293,6 +292,7 @@ def menu6():
 
 #Menu 8 :: Check Student registration by entering ssn or name
 def menu7():
+    clear()
     print("Check a Students registration: ")
     functionsDB.showStuds()
     sel7 = input('Check a students registration by name or ssn: (TYPE EITHER OR NOTHING TO RETURN TO MAIN MENU )')
@@ -325,7 +325,6 @@ def menu7():
                 curent_reg = ('{} | {} | {}\t\t | {} | {} | {}'.format(name, ssn, code, year, semester, title))
                 print(curent_reg)
 
-
         print('Would you like to check another student''s registration? Y for YES and N for NO!')
         choice = input(' >> ')
         choice = choice.lower()
@@ -334,12 +333,12 @@ def menu7():
         else:
             menu_actions['main_menu']()
 
-
 #Menu8 :: Upload grades (give code, year ,semster (then input grade for every registered student)
 def menu8():
+    clear()
     print("Upload grades for students:")
     functionsDB.showReg()
-    sel8 = input("Pease give course code of the class you would like to enter grades for: (ENTER NOTHING TO RETURN TO THE MAIN MENU)")
+    sel8 = input("Please give course code of the class you would like to enter grades for: (ENTER NOTHING TO RETURN TO THE MAIN MENU)")
     if sel8 == '':
         print('Error: No course selected, returning you to main menu')
         menu_actions['main_menu']()
@@ -349,20 +348,28 @@ def menu8():
         sel8_args = (sel8, sel8_year, sel8_semester)
         sel8_query1 = 'SELECT ssn FROM Registered WHERE code = %s AND year = %s AND Semester = %s'
         cursor.execute(sel8_query1, sel8_args)
-        print('The following students are registered for', sel8,': ')
+        # cnx.commit()
+        print('Please enter grades for students in course', sel8,': ')
         for ssn in cursor:
-            current_studs = (ssn)
-            print(current_studs)
+            sel8_grade = input('Please input grade for ',ssn,':')
+            update_grade = "UPDATE Registered SET grade = {} WHERE ssn = {}."
+            sel8_grade_args = (ssn, sel8_grade)
+            cursor.execute(update_grade, (sel8_grade_args, ))
+            # cnx.commit()
+            print('Student {} grade has been updated to {} '.format(ssn, update_grade))
 
-        sel8_year = input('Please input the year of the class:')
-        sel8_semester = input('Please input the year of the class: ')
-
-
-
-
+        # UPDATE Registered SET grade = 'A' WHERE ssn = 55555503
+    print('Would you like to edit another student''s grades? Y for YES and N for NO!')
+    choice = input(' >> ')
+    choice = choice.lower()
+    if choice == 'y':
+        menu_actions['8']()
+    else:
+        menu_actions['main_menu']()
 
 #Menu9 :: Check grades by giving (code, student SSN or name ,year semster
 def menu9():
+    clear()
     print("Check a Students grades: ")
     functionsDB.showCourse()
     reg9 = input('Please input a course code to check the students grades: (TYPE NOTHING TO RETURN TO MAIN MENU )')
@@ -370,7 +377,6 @@ def menu9():
     if reg9 == '':
         print('Error: No course selected, returning you to main menu')
         menu_actions['main_menu']()
-        # select s.name, r.ssn, r.code, r.year, r.semester, r.grade FROM Registered r, Student s WHERE s.ssn = r.ssn;
 
     else:
         sel9_SSNname = input('Check a students grades by name or ssn: (TYPE EITHER HERE)')
@@ -379,6 +385,7 @@ def menu9():
 
         if sel9_SSNname.isdigit():
             query9_args = (reg9, sel9_SSNname, sel9_year, sel9_semester)
+            print('Here is the grades you requested: ')
             check_query = ('SELECT s.name, r.ssn, r.code, r.grade '
                            'FROM Registered r, Student s WHERE r.code = %s AND s.ssn = r.ssn AND r.ssn = %s AND r.year = %s AND r.semester = %s')
             try:
@@ -390,20 +397,17 @@ def menu9():
         else:
             query9_args = (reg9, sel9_SSNname, sel9_year, sel9_semester)
             check_query = ('SELECT s.name, r.ssn, r.code, r.grade '
-                           'FROM Student s, Registered r'
-                           'WHERE s.ssn = r.ssn AND c.code = {} AND s.name = (), r.year = {}, r.semester = {}')
+                           'FROM Student s, Registered r '
+                           'WHERE s.ssn = r.ssn AND r.code = %s AND s.Name = %s AND r.year = %s AND r.semester = %s')
             try:
                 cursor.execute(check_query, query9_args)
+                print('Here is the grades you requested: ')
                 for (name, ssn, code, grade) in cursor:
                     print('{} | {} | {} | {}'.format(name,ssn, code, grade))
 
             except mysql.connector.Error as err:
                 print('Error code: ', err)
 
-
-        for (name, ssn, code, grade) in cursor:
-            curent_reg = ('{} | {} | {} | {}'.format(name, ssn, code, grade))
-            print(curent_reg)
         print('Would you like to check another student''s grades? Y for YES and N for NO!')
         choice = input(' >> ')
         choice = choice.lower()
@@ -411,7 +415,6 @@ def menu9():
             menu_actions['9']()
         else:
             menu_actions['main_menu']()
-
 
 # Exit program
 def exit():
