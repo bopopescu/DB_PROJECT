@@ -363,43 +363,52 @@ def menu8():
 
 #Menu9 :: Check grades by giving (code, student SSN or name ,year semster
 def menu9():
-    print("Check a Students registration: ")
-    functionsDB.showStuds()
-    sel7 = input('Check a students registration by name or ssn: (TYPE EITHER OR NOTHING TO RETURN TO MAIN MENU )')
-    if sel7 == '':
+    print("Check a Students grades: ")
+    functionsDB.showCourse()
+    reg9 = input('Please input a course code to check the students grades: (TYPE NOTHING TO RETURN TO MAIN MENU )')
+
+    if reg9 == '':
         print('Error: No course selected, returning you to main menu')
         menu_actions['main_menu']()
+        # select s.name, r.ssn, r.code, r.year, r.semester, r.grade FROM Registered r, Student s WHERE s.ssn = r.ssn;
 
     else:
-        if sel8.isdigit():
-            check_query = ('SELECT s.name, r.ssn, r.code, c.title, r.year, r.semester '
-                           'FROM Student s, Registered r, Course c '
-                           'WHERE s.ssn = r.ssn AND c.code = r.code AND r.ssn = {}'.format(sel8))
+        sel9_SSNname = input('Check a students grades by name or ssn: (TYPE EITHER HERE)')
+        sel9_year = input('Please enter year: ')
+        sel9_semester = input('Please enter semester: ')
+
+        if sel9_SSNname.isdigit():
+            query9_args = (reg9, sel9_SSNname, sel9_year, sel9_semester)
+            check_query = ('SELECT s.name, r.ssn, r.code, r.grade '
+                           'FROM Registered r, Student s WHERE r.code = %s AND s.ssn = r.ssn AND r.ssn = %s AND r.year = %s AND r.semester = %s')
             try:
-                cursor.execute(check_query)
+                cursor.execute(check_query, query9_args)
                 cnx.commit()
             except mysql.connector.Error as err:
                 print('Error code: ', err)
-            for (name, ssn, code, title, year, semester) in cursor:
-                curent_reg = ('{} | {} | {} | {} | {} | {}'.format(name, ssn, code, year, semester, title))
-                print(curent_reg)
+
         else:
-            check_query = ('SELECT s.name, r.ssn, r.code, c.title, r.year, r.semester '
-                           'FROM Student s, Registered r, Course c '
-                           'WHERE s.ssn = r.ssn AND c.code = r.code AND s.name = %s')
+            query9_args = (reg9, sel9_SSNname, sel9_year, sel9_semester)
+            check_query = ('SELECT s.name, r.ssn, r.code, r.grade '
+                           'FROM Student s, Registered r'
+                           'WHERE s.ssn = r.ssn AND c.code = {} AND s.name = (), r.year = {}, r.semester = {}')
             try:
-                cursor.execute(check_query, (sel8, ))
+                cursor.execute(check_query, query9_args)
+                for (name, ssn, code, grade) in cursor:
+                    print('{} | {} | {} | {}'.format(name,ssn, code, grade))
+
             except mysql.connector.Error as err:
                 print('Error code: ', err)
-            for (name, ssn, code, title, year, semester) in cursor:
-                curent_reg = ('{} | {} | {}\t\t | {} | {} | {}'.format(name, ssn, code, year, semester, title))
-                print(curent_reg)
 
-        print('Would you like to check another student''s registration? Y for YES and N for NO!')
+
+        for (name, ssn, code, grade) in cursor:
+            curent_reg = ('{} | {} | {} | {}'.format(name, ssn, code, grade))
+            print(curent_reg)
+        print('Would you like to check another student''s grades? Y for YES and N for NO!')
         choice = input(' >> ')
         choice = choice.lower()
         if choice == 'y':
-            menu_actions['7']()
+            menu_actions['9']()
         else:
             menu_actions['main_menu']()
 
