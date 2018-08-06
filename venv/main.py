@@ -10,7 +10,7 @@ cnx = mysql.connector.connect(user='dbproject',
                               password='1234pass',
                               host='127.0.0.1',
                               database='dbproject')
-cursor = cnx.cursor()
+cursor = cnx.cursor(buffered=True)
 
 #================
 #   MENU HEADER
@@ -337,7 +337,7 @@ def menu7():
 def menu8():
     clear()
     print("Upload grades for students:")
-    functionsDB.showReg()
+    # functionsDB.showReg()
     sel8 = input("Please give course code of the class you would like to enter grades for: (ENTER NOTHING TO RETURN TO THE MAIN MENU)")
     if sel8 == '':
         print('Error: No course selected, returning you to main menu')
@@ -346,19 +346,18 @@ def menu8():
         sel8_year = input('Please select the course year: ')
         sel8_semester = input('Please input the course semester: ')
         sel8_args = (sel8, sel8_year, sel8_semester)
-        sel8_query1 = 'SELECT ssn FROM Registered WHERE code = %s AND year = %s AND Semester = %s'
-        cursor.execute(sel8_query1, sel8_args)
-        # cnx.commit()
+        cursor.execute("SELECT r.ssn FROM Registered r, Student s WHERE r.code = %s AND year = %s AND semester = %s",(sel8, sel8_year, sel8_semester))
+        cnx.commit()
         print('Please enter grades for students in course', sel8,': ')
-        for ssn in cursor:
-            sel8_grade = input('Please input grade for ',ssn,':')
-            update_grade = "UPDATE Registered SET grade = {} WHERE ssn = {}."
-            sel8_grade_args = (ssn, sel8_grade)
-            cursor.execute(update_grade, (sel8_grade_args, ))
-            # cnx.commit()
-            print('Student {} grade has been updated to {} '.format(ssn, update_grade))
 
-        # UPDATE Registered SET grade = 'A' WHERE ssn = 55555503
+        for ssn in cursor:
+            sel8_grade = input('Please input grade for {}: ',ssn)
+            update_grade = "UPDATE Registered SET grade = %s WHERE ssn = %s AND code = %s year = %s AND semester = %s"
+            sel8_grade_args = (sel8_grade, ssn,sel8,  sel8_year, sel8_semester)
+            cursor.execute(update_grade, sel8_grade_args)
+            cnx.commit()
+            print('Student {} grade has been updated to {} '.format(ssn, sel8_grade))
+
     print('Would you like to edit another student''s grades? Y for YES and N for NO!')
     choice = input(' >> ')
     choice = choice.lower()
