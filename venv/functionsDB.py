@@ -27,3 +27,14 @@ def showStuds():
     for (ssn, name, address, major) in cursor:
         curr_studs = ('{}\t | {}'.format(ssn, name))
         print(curr_studs)
+
+def showReg():
+    showReg = ('SELECT c.code, r.year, r.semester FROM Registered r, Course c WHERE c.code = r.code')
+    cursor.execute(showReg)
+    print('Current courses: ')
+    for (code, year, semester) in cursor:
+        print('{} | {} | {}'.format(code, year, semester))
+
+def printSpaces():
+    for i in range(3):
+        print('\n')

@@ -1,8 +1,8 @@
-#Author: Russ Seaman
+#Author:#################
 #Assignment: Online Registration System Database Assignment
 #Date: 06/05/2018
 
-import sys, os
+import sys, os, time
 import mysql.connector
 import functionsDB
 
@@ -27,13 +27,14 @@ print('*********************************************************************')
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-menu_actions = {}
-
+time.sleep(1)
 #===================
 #   MENU FUNCTIONS
 #===================
 
+
 def main_menu():
+    functionsDB.printSpaces()
     print('******MAIN MENU******')
     print('\t 1. Add a course')
     print('\t 2. Delete a course')
@@ -209,16 +210,16 @@ def menu4():
 def menu5():
     print("Register a student for a course: ")
     functionsDB.showStuds()
-    selSSN = input('Please enter a SSN: ')
+    selSSN = input('Please enter a SSN of the student you would like to register: (ENTER NOTHING TO RETURN TO THE MAIN MENU)')
 
-    print("Available courses to register: ")
-    functionsDB.showCourse()
-    selCC = input('Please input a course code you would like to register a student for: (ENTER NOTHING TO RETURN TO THE MAIN MENU)')
 
-    if selCC == '':
-        print('Error: No course selected, returning you to main menu')
+    if selSSN == '':
+        print('No course selected, returning you to main menu')
         menu_actions['main_menu']()
     else:
+        print("Available courses to register: ")
+        functionsDB.showCourse()
+        selCC = input('Please input a course code you would like to register a student for:')
         selYear = input('Please input a year for the course registration: ')
         selSem = input('Spring | Summer | Fall: ')
         register_student = (selSSN, selCC, selYear, selSem)
@@ -233,13 +234,13 @@ def menu5():
         except mysql.connector.Error as err:
             print('Error code: ', err)
 
-        print('Would you like to register another student? Y for YES and N for NO!')
-        choice = input(' >> ')
-        choice = choice.lower()
-        if choice == 'y':
-            menu_actions['5']()
-        else:
-            menu_actions['main_menu']()
+    print('Would you like to register another student? Y for YES and N for NO!')
+    choice = input(' >> ')
+    choice = choice.lower()
+    if choice == 'y':
+        menu_actions['5']()
+    else:
+        menu_actions['main_menu']()
 
 #Menu6 :: Drop a student from a course (code, SSN, year, semester)
 def menu6():
@@ -294,8 +295,8 @@ def menu6():
 def menu7():
     print("Check a Students registration: ")
     functionsDB.showStuds()
-    sel8 = input('Check a students registration by name or ssn: (TYPE EITHER OR NOTHING TO RETURN TO MAIN MENU )')
-    if sel8 == '':
+    sel7 = input('Check a students registration by name or ssn: (TYPE EITHER OR NOTHING TO RETURN TO MAIN MENU )')
+    if sel7 == '':
         print('Error: No course selected, returning you to main menu')
         menu_actions['main_menu']()
 
@@ -304,16 +305,24 @@ def menu7():
             check_query = ('SELECT s.name, r.ssn, r.code, c.title, r.year, r.semester '
                            'FROM Student s, Registered r, Course c '
                            'WHERE s.ssn = r.ssn AND c.code = r.code AND r.ssn = {}'.format(sel8))
-            cursor.execute(check_query)
-            print(' {}\t\t   | {}\t\t| {}\t | {}\t | {}\t | {}'.format('Name','SSN','Code','Year','Semster','Title'))
+            try:
+                cursor.execute(check_query)
+                cnx.commit()
+            except mysql.connector.Error as err:
+                print('Error code: ', err)
             for (name, ssn, code, title, year, semester) in cursor:
-                curent_reg = ('{} | {} | {}\t\t | {} | {} | {}'.format(name, ssn, code, year, semester, title))
+                curent_reg = ('{} | {} | {} | {} | {} | {}'.format(name, ssn, code, year, semester, title))
                 print(curent_reg)
         else:
-            check_query = ('SELECT * FROM Student WHERE name = %s')
-            cursor.execute(check_query, (sel8, ))
-            for (ssn, name, address, major) in cursor:
-                curent_reg = ('{}\t | {}'.format(ssn, name))
+            check_query = ('SELECT s.name, r.ssn, r.code, c.title, r.year, r.semester '
+                           'FROM Student s, Registered r, Course c '
+                           'WHERE s.ssn = r.ssn AND c.code = r.code AND s.name = %s')
+            try:
+                cursor.execute(check_query, (sel8, ))
+            except mysql.connector.Error as err:
+                print('Error code: ', err)
+            for (name, ssn, code, title, year, semester) in cursor:
+                curent_reg = ('{} | {} | {}\t\t | {} | {} | {}'.format(name, ssn, code, year, semester, title))
                 print(curent_reg)
 
 
@@ -325,33 +334,75 @@ def menu7():
         else:
             menu_actions['main_menu']()
 
-    # try:
-    #     cursor.execute(check_query, (sel8,))
-    #     cnx.commit()
 
-
-
-    # except mysql.connector.Error as err:
-    #     print('Error code: ', err)
-
-    #
-    # try:
-    #     cursor.execute(sel_state, (sel_Name, ))
-    #     cnx.commit()
-    #     # print("Student Name: {} | SSN: {}".format(name, ssn))
-    #     for ( name, code,year, semester) in cursor:
-    #         current_reg = ('{} | {} | {} | {}'.format(name, code,year, semester))
-    #         print(current_reg)
-    # except mysql.connector.Error as err:
-    #     print('Error code: ', err)
-
-#Menu8 :: Upload grades
+#Menu8 :: Upload grades (give code, year ,semster (then input grade for every registered student)
 def menu8():
-    pass
+    print("Upload grades for students:")
+    functionsDB.showReg()
+    sel8 = input("Pease give course code of the class you would like to enter grades for: (ENTER NOTHING TO RETURN TO THE MAIN MENU)")
+    if sel8 == '':
+        print('Error: No course selected, returning you to main menu')
+        menu_actions['main_menu']()
+    else:
+        sel8_year = input('Please select the course year: ')
+        sel8_semester = input('Please input the course semester: ')
+        sel8_args = (sel8, sel8_year, sel8_semester)
+        sel8_query1 = 'SELECT ssn FROM Registered WHERE code = %s AND year = %s AND Semester = %s'
+        cursor.execute(sel8_query1, sel8_args)
+        print('The following students are registered for', sel8,': ')
+        for ssn in cursor:
+            current_studs = (ssn)
+            print(current_studs)
 
-#Menu9 :: Check grades
+        sel8_year = input('Please input the year of the class:')
+        sel8_semester = input('Please input the year of the class: ')
+
+
+
+
+
+#Menu9 :: Check grades by giving (code, student SSN or name ,year semster
 def menu9():
-    pass
+    print("Check a Students registration: ")
+    functionsDB.showStuds()
+    sel7 = input('Check a students registration by name or ssn: (TYPE EITHER OR NOTHING TO RETURN TO MAIN MENU )')
+    if sel7 == '':
+        print('Error: No course selected, returning you to main menu')
+        menu_actions['main_menu']()
+
+    else:
+        if sel8.isdigit():
+            check_query = ('SELECT s.name, r.ssn, r.code, c.title, r.year, r.semester '
+                           'FROM Student s, Registered r, Course c '
+                           'WHERE s.ssn = r.ssn AND c.code = r.code AND r.ssn = {}'.format(sel8))
+            try:
+                cursor.execute(check_query)
+                cnx.commit()
+            except mysql.connector.Error as err:
+                print('Error code: ', err)
+            for (name, ssn, code, title, year, semester) in cursor:
+                curent_reg = ('{} | {} | {} | {} | {} | {}'.format(name, ssn, code, year, semester, title))
+                print(curent_reg)
+        else:
+            check_query = ('SELECT s.name, r.ssn, r.code, c.title, r.year, r.semester '
+                           'FROM Student s, Registered r, Course c '
+                           'WHERE s.ssn = r.ssn AND c.code = r.code AND s.name = %s')
+            try:
+                cursor.execute(check_query, (sel8, ))
+            except mysql.connector.Error as err:
+                print('Error code: ', err)
+            for (name, ssn, code, title, year, semester) in cursor:
+                curent_reg = ('{} | {} | {}\t\t | {} | {} | {}'.format(name, ssn, code, year, semester, title))
+                print(curent_reg)
+
+        print('Would you like to check another student''s registration? Y for YES and N for NO!')
+        choice = input(' >> ')
+        choice = choice.lower()
+        if choice == 'y':
+            menu_actions['7']()
+        else:
+            menu_actions['main_menu']()
+
 
 # Exit program
 def exit():
